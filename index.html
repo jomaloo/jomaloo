@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>형님의 멋진 홈페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .category-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .category {
+            background: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+        .category:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>안녕하세요? 잘 오셨습니다.</h1>
+    </header>
+    <section>
+        <h2>소개</h2>
+        <p>이곳은 비밀의 방...</p>
+        
+        <!-- 추가된 내용창 -->
+        <h3>내용</h3>
+        <p>궁금한 카테고리를 선택하세요!</p>
+        
+        <!-- 하위 카테고리 -->
+        <div class="category-container">
+            <a class="category" href="#jomaru">조마루</a>
+            <a class="category" href="#jomureok">조무럭</a>
+            <a class="category" href="#kimseondeok">김선덕</a>
+            <a class="category" href="#kimilgwang">김일광</a>
+        </div>
+    </section>
+    <footer>
+        &copy; 2024 형님 All rights reserved.
+    </footer>
+
+    <!-- 각 하위 목록의 상세 페이지 -->
+    <section id="jomaru" style="display:none;">
+        <h2>조마루</h2>
+        <p>조마루는 하얀 고양이다.</p>
+    </section>
+    <section id="jomureok" style="display:none;">
+        <h2>조무럭</h2>
+        <p>조무럭은 릴리 화이트 크레스티드 게코다.</p>
+    </section>
+    <section id="kimseondeok" style="display:none;">
+        <h2>김선덕</h2>
+        <p>김선덕은 쿼트핀스트라이프 크레스티드 게코다.</p>
+    </section>
+    <section id="kimilgwang" style="display:none;">
+        <h2>김일광</h2>
+        <p>김일광은 레드팬텀릴리 크레스티드 게코다.</p>
+    </section>
+
+    <script>
+        // 카테고리 클릭 시 상세 페이지 표시
+        document.querySelectorAll('.category').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // 기본 동작 차단
+                document.querySelectorAll('section[id]').forEach(section => section.style.display = 'none');
+                const targetId = e.target.getAttribute('href').substring(1); // 링크의 ID 추출
+                document.getElementById(targetId).style.display = 'block';
+                window.scrollTo(0, 0); // 화면을 상단으로 스크롤
+            });
+        });
+    </script>
+</body>
+</html>
